@@ -1,70 +1,36 @@
-# Windows RDP Installer
+# Tutorial Install dengan 1 klik
 
-[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/FighterTunnel/tunnel)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-green)](https://GitHub.com/FighterTunnel/tunnel/graphs/commit-activity)
-[![GitHub Forks](https://img.shields.io/github/forks/FighterTunnel/tunnel?&logo=github)](https://github.com/FighterTunnel/tunnel/fork)
-[![GitHub Stars](https://img.shields.io/github/stars/FighterTunnel/tunnel?&logo=github)](https://github.com/FighterTunnel/tunnel/stargazers)
+saya telah membuat file image Windows saya sendiri yang dapat diunduh di [link ini](https://github.com/FighterTunnel/rdp). File-file tersebut merupakan karya saya sendiri dan saya jamin keamanannya.
 
-## Deskripsi
-Repositori ini berisi skrip dan panduan untuk menginstal dan mengonfigurasi Remote Desktop Protocol (RDP) pada sistem operasi Windows. RDP memungkinkan pengguna untuk terhubung ke komputer Windows dari jarak jauh, memberikan akses penuh ke desktop, aplikasi, dan file.
+Kini, saya juga telah menyiapkan skrip installer untuk memudahkan kalian dalam menginstal OS Windows di VPS. Berikut adalah langkah-langkah terbaru untuk menginstal OS Windows di VPS DigitalOcean.
 
-![Screenshot](https://www.bleepstatic.com/content/hl-images/2024/05/14/Windows-Server.jpg)
+Prosesnya hampir sama, tetapi dengan menggunakan skrip installer ini, kalian tidak perlu lagi melakukan konfigurasi IP setelah proses instalasi. Jadi, setelah instalasi selesai, RDP kalian dapat langsung digunakan!
 
-## Fitur
-- Instalasi mudah dan cepat untuk RDP pada Windows.
-- Konfigurasi pengaturan RDP sesuai kebutuhan pengguna.
-- Dukungan untuk berbagai versi Windows (Windows 10, Windows Server, dll.).
+### 1. Buat Droplet
+Kali ini, saya menggunakan OS Ubuntu 20.04 dalam proses pembuatannya. Jangan lupa untuk tidak mencentang pilihan User Data.
 
-## Prerequisites
-- Sistem operasi Windows yang kompatibel.
-- Koneksi internet untuk mengunduh pembaruan dan driver yang diperlukan.
-- Autosetup Interface IP RDP
+### 2. Masuk Mode Recovery
+Setelah berhasil membuat VPS (droplet), kita perlu mengubah VPS ke mode recovery. Caranya:
+![Screenshot](https://raw.githubusercontent.com/FighterTunnel/rdp/main/image/photo_1.jpg)
 
-## Install Otomatis Dengan 1 Klik
-```
-wget https://raw.githubusercontent.com/FighterTunnel/rdp/main/image/auto.sh && bash auto.sh
-```
-## Install Manual
-1. **Windows 10**
-```
-wget -O- --no-check-certificate https://image.yha.my.id/2:/windows10.gz | gunzip | dd of=/dev/vda
-```
-2. **Windows Server 2012 R2**
-```
-wget -O- --no-check-certificate https://image.yha.my.id/2:/indows2012.gz | gunzip | dd of=/dev/vda
-```
-3. **Windows Server 2016**
-```
-wget -O- --no-check-certificate https://image.yha.my.id/2:/windows2016.gz | gunzip | dd of=/dev/vda
-```
-4. **Windows Server 2019**
-```
-wget -O- --no-check-certificate https://image.yha.my.id/2:/windows2019.gz | gunzip | dd of=/dev/vda
-```
-5. **Windows Server 2022**
-```
-wget -O- --no-check-certificate https://image.yha.my.id/2:/windows2022.gz | gunzip | dd of=/dev/vda
-```
+- Matikan VPS.
+- Ubah pengaturan boot ke Boot from Recovery ISO.
+- Hidupkan kembali VPS.
+- Masuk ke console.
+  
+Jika jendela browser tidak muncul seperti gambar di bawah, silakan tekan ENTER.
+![Screenshot](https://raw.githubusercontent.com/FighterTunnel/rdp/main/image/photo_2.jpg)
+### Install Windows
+Setelah berhasil masuk ke mode recovery, jalankan perintah berikut untuk memulai proses instalasi.
 
-## Ikuti Petunjuk di Layar
-<details>
-<summary><b>🔗 Remote Desktop Protocol Detail Login</b></summary>
+Pilih OS yang ingin kalian instal. Kalian juga bisa menggunakan mirror; jika server tempat image yang saya sediakan terasa lambat, kalian dapat me-mirror file image yang saya buat di server kalian sendiri.
 
-### Remote Desktop Protocol Detail Login
+Setelah proses instalasi selesai, skrip ini akan otomatis mematikan VPS kalian.
 
--  RDP HOST/IP PORT `5888`
--  Username `Administrator`
--  Password `@Ftvpnstores`
-</details>
+### Matikan Mode Recovery
+Setelah proses di atas selesai, kita perlu mematikan mode recovery di VPS. Caranya:
 
+- Ubah pengaturan boot kembali ke Boot from Hard Drive.
+- Hidupkan kembali VPS.
 
-
-<h3 align="center">Sangat disarankan mengganti password!!!</h3>
-
-## Kontribusi
-Kami menyambut baik kontribusi dari komunitas! Silakan buka isu atau kirim pull request jika Anda memiliki saran atau perbaikan.
-
-## Lisensi
-Repositori ini dilisensikan di bawah [Raphielscape Public License](https://raw.githubusercontent.com/FighterTunnel/rdp/main/LICENCE) - Version 1.d, Agust 2024
-
-Anda dapat menyesuaikan bagian-bagian tertentu sesuai dengan kebutuhan spesifik proyek Anda
+RDP kalian siap digunakan! Kalian dapat login menggunakan RDP tanpa harus melakukan konfigurasi IP di Windows.
